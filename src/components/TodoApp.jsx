@@ -1,11 +1,14 @@
 import React from 'react';
 import TodoList from './TodoList.jsx';
-import AddTodo from './AddTodo.jsx'
+import AddTodo from './AddTodo.jsx';
+import TodoSearch from './TodoSearch.jsx'
 
 
 var TodoApp = React.createClass({
   getInitialState: function(){
     return{
+      showCompleted: false,
+      searchText: '',
       todos: [
         {
           id: 1,
@@ -29,6 +32,12 @@ var TodoApp = React.createClass({
   handleAddTodo: function(task){
     alert('new Todo: '+task)
   },
+  handleSearch: function(showCompleted, searchText){
+    this.setState({
+      showCompleted: showCompleted,
+      searchText: searchText.toLowerCase()
+    })
+  },
   render: function(){
     var {todos} = this.state;
 
@@ -36,6 +45,7 @@ var TodoApp = React.createClass({
       <div>
         <TodoList todos={todos} />
         <AddTodo handleAddTodo={this.handleAddTodo} />
+        <TodoSearch onSearch={this.handleSearch}/>
       </div>
     )
   }
