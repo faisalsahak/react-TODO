@@ -1,10 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
+import TodoApp from './components/TodoApp.jsx';
 
-class App extends Component {
-  render() {
+var App = React.createClass({
+  render: function() {
     return (
-      <h1>Hello React :)</h1>
+      <div>
+        <TodoApp />
+      </div>
     );
   }
-}
-export default App;
+});
+
+
+module.exports =  App;
